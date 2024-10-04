@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Razorpay Test Payment</title>
+</head>
+<body>
+    <h1>Test Payment</h1>
+    <button id="rzp-button1">Pay</button>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "Razorpay key", // Replace with your Razorpay key ID
+            "amount": "50000", // Amount in paise
+            "currency": "INR",
+            "name": "Acme Corp",
+            "description": "Test Transaction",
+            "order_id": "order_id", // Replace with the order ID you got from creating the order
+            "handler": function (response){
+                console.log(response); // Log the entire response object
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature);
+                // You can use these response values to test your /api/payment_success endpoint
+            },
+            "prefill": {
+                "name": "Test User",
+                "email": "test.user@example.com",
+                "contact": "9999999999"
+            },
+            "notes": {
+                "address": "Test Address"
+            },
+            "theme": {
+                "color": "#F37254"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        document.getElementById('rzp-button1').onclick = function(e){
+            rzp1.open();
+            e.preventDefault();
+        }
+    </script>
+</body>
+</html>
