@@ -1,4 +1,4 @@
-# Team7-E-commerce-Backend
+#E-commerce-Backend
 The task involves integrating the backend for the e-commerce merch page. This includes setting up the necessary databases, APIs, and server-side logic to support the merchandise functionalities.
 
 ## README
